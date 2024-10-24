@@ -18,7 +18,8 @@ export function textStream(
                 )
                 return dataPromise.catch(console.error).then(data => {
                     clearInterval(streamInterval)
-                    if (typeof data === 'string') controller.enqueue(data)
+                    if (typeof data === 'string')
+                        controller.enqueue(encoder.encode(data))
                     else console.error(data)
                     controller.close()
                 })
